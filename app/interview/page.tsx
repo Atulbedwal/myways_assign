@@ -23,8 +23,12 @@ const Interview = () => {
             .play()
             .catch((error) => console.error("Error playing the video:", error));
         }
-      } catch (error: any) {
-        console.error("Error accessing camera and microphone:", error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error("Error accessing camera and microphone:", error.message);
+        } else {
+          console.error("An unknown error occurred");
+        }
       }
     };
 
@@ -49,9 +53,11 @@ const Interview = () => {
       .toString()
       .padStart(2, "0")}`;
   };
-  const handleNext = () =>{
-    redirect('/end')
-  }
+
+  const handleNext = () => {
+    redirect("/end");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center bg-gray-900 text-white min-h-screen px-6 lg:px-16">
       <div className="m-auto flex w-[95%] max-w-[88rem] flex-col items-center gap-2 pb-8 md:w-[100%]">
@@ -87,14 +93,15 @@ const Interview = () => {
           />
           {/* Save and Next Button */}
           <Button 
-          onClick={handleNext}
-          className="bg-[#6C60F4] hover:bg-[#4F33CC] text-white py-3 px-4 rounded-lg mt-4 w-40">
+            onClick={handleNext}
+            className="bg-[#6C60F4] hover:bg-[#4F33CC] text-white py-3 px-4 rounded-lg mt-4 w-40"
+          >
             <span className="font-bold">Save and Next</span>
           </Button>
           <div className="flex items-center space-x-2">
             <Info size={16} className="h-4 w-4 text-gray-400" />
             <span className="mt-1 text-sm text-gray-400">
-            Press &apos;Enter&apos; for Saving and Next!
+              Press &apos;Enter&apos; for Saving and Next!
             </span>
           </div>
         </div>

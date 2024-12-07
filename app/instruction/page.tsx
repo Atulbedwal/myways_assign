@@ -11,8 +11,6 @@ const Instruction = () => {
 
   useEffect(() => {
     const requestPermissions = async () => {
-      type NewType = any;
-
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
@@ -26,8 +24,12 @@ const Instruction = () => {
             console.error("Error playing the video:", error);
           });
         }
-      } catch (error: NewType) {
-        console.error("Error accessing camera and microphone:", error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error("Error accessing camera and microphone:", error.message);
+        } else {
+          console.error("An unknown error occurred");
+        }
       }
     };
 
