@@ -94,7 +94,7 @@ const Interview = () => {
           <div className="flex items-center space-x-2">
             <Info size={16} className="h-4 w-4 text-gray-400" />
             <span className="mt-1 text-sm text-gray-400">
-              Press 'Enter' for Saving and Next!
+            Press &apos;Enter&apos; for Saving and Next!
             </span>
           </div>
         </div>

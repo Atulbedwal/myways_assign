@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "../../components/ui/button";
 import { Clock, ExternalLink, Landmark } from "lucide-react";
 
@@ -11,6 +11,8 @@ const Instruction = () => {
 
   useEffect(() => {
     const requestPermissions = async () => {
+      type NewType = any;
+
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
@@ -24,7 +26,7 @@ const Instruction = () => {
             console.error("Error playing the video:", error);
           });
         }
-      } catch (error: any) {
+      } catch (error: NewType) {
         console.error("Error accessing camera and microphone:", error);
       }
     };
