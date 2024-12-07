@@ -25,7 +25,10 @@ const Interview = () => {
         }
       } catch (error: unknown) {
         if (error instanceof Error) {
-          console.error("Error accessing camera and microphone:", error.message);
+          console.error(
+            "Error accessing camera and microphone:",
+            error.message
+          );
         } else {
           console.error("An unknown error occurred");
         }
@@ -69,8 +72,8 @@ const Interview = () => {
         {/* Question Text */}
         <div className="mb-4 text-center">
           <span className="font-semibold">
-            Hi, I'm Avya, and I'll be conducting the interview today. How are
-            you doing?
+            Hi, I&apos;m Avya, and I&apos;ll be conducting the interview today.
+            How are you doing?
           </span>
         </div>
 
@@ -92,7 +95,7 @@ const Interview = () => {
             muted
           />
           {/* Save and Next Button */}
-          <Button 
+          <Button
             onClick={handleNext}
             className="bg-[#6C60F4] hover:bg-[#4F33CC] text-white py-3 px-4 rounded-lg mt-4 w-40"
           >
